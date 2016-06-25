@@ -51,19 +51,25 @@ The below are required only if you want to use **tor** related utilities:-
 
 
 ###How to know if ProxyHelper is working?   
+
+You may need to restart you terminal for this. Also, reconnect your interent connection to see ProxyHelper perform it's auto-proxy-set feature.    
   
-1. You should be able to execute torpinger and zetproxy as a command in the shell.  
-Note: You may need to restart you terminal for this.
-```torpinger```  
-or  
-```zetproxy```  
-====
-  
-Close your internet connection and then restart it to see ProxyHelper set proxy automatically and start torpinger    
-2. Check the content of /tmp/torpingtest in interval of some time, if some lines are being added to the file automatically, then voila! your torpinging is working perfectly fine    
-```cat /tmp/torpingtest```  
-3. Check the content of your /etc/environment file, the best proxy for your network should be automatically set there.    
-```cat /etc/environment```
+1. You should be able to execute torpinger and zetproxy as a command in the shell, by typing the below commands as it is.  
+```
+zetproxy
+```
+or     
+```
+torpinger
+```
+3. Check the content of /tmp/torpingtest in interval of some time, if some lines are being added to the file automatically, then voila! your torpinging is working perfectly fine    
+```
+cat /tmp/torpingtest  
+```
+4. Check the content of your /etc/environment file, the best proxy for your network should be automatically set there.    
+```
+cat /etc/environment
+```
 
 ===
 
