@@ -54,10 +54,9 @@ The below are required only if you want to use **tor** related utilities:-
   
 1. You should be able to execute torpinger and zetproxy as a command in the shell.  
 Note: You may need to restart you terminal for this.
-```topinger```  
+```torpinger```  
 or  
 ```zetproxy```  
-
 ====
   
 Close your internet connection and then restart it to see ProxyHelper set proxy automatically and start torpinger    
