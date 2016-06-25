@@ -52,9 +52,11 @@ The below are required only if you want to use **tor** related utilities:-
 
 ###How to know if ProxyHelper is working?   
   
-1. Check the content of /tmp/torpingtest in interval of some time, if some lines are being added to the file automatically, then voila! your torpinging is working perfectly fine  
+1. You should be able to execute torpinger and zetproxy as a command in the shell. Note: You may need to restart you terminal for this.
+Close your internet connection and then restart it 
+2. Check the content of /tmp/torpingtest in interval of some time, if some lines are being added to the file automatically, then voila! your torpinging is working perfectly fine  
 ```cat /tmp/torpingtest```
-2. Check the content of your /etc/environment file, the best proxy for your network should be automatically set there.  
+3. Check the content of your /etc/environment file, the best proxy for your network should be automatically set there.  
 ```cat /etc/environment```
 
 ===
@@ -63,6 +65,7 @@ The below are required only if you want to use **tor** related utilities:-
 ###Uninstallation
   
 1. Go to the directory where you cloned ProxyHelper  
+```cd ~/.proxyhelper```
 2. Run the uninstallation script  
 ```sudo ./uninstall.sh```
    
