@@ -10,9 +10,14 @@ import time
 try:
     import socks
 except ImportError:
-    print('Pysocks not installed, do "pip3 install pysocks"')
-    print('If pip3 is not installed do "sudo apt-get install python3-pip"') 
-    print('On older versions of Ubuntu it is possible that python3 is not installed\n\ Look up google for that')
+    print('Import error: Ensure all requirements are matched')
+    print('Try doing this :->\n')
+    print('\t> sudo apt-get install python3-pip')
+    print('\t> pip3 install pysocks\n')
+    # print('If pip3 is not installed do "sudo apt-get install python3-pip"') 
+    print('On older versions of Ubuntu it is possible '
+    'that python3 is not installed. '
+    'Look up on google for that.\n')
     sys.exit(1)
 try:
     from urllib.request import urlopen
@@ -97,7 +102,7 @@ class TorPinger(object):
         ## If we get away from loop due to timeout, then exit
         if len(SOCKS) == 0:
             print('Sorry dude couldn\'t find any active tor connection in the\
-                    given time, exitting')
+                    given time, exiting')
             return 
         ## Else we are good to go and have a list of open tor sockets
         ## Of which we choose the one with highest priority

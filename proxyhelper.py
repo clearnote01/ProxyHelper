@@ -4,7 +4,8 @@ import subprocess
 
 
 if __name__ == '__main__':
-    home = subprocess.os.environ.get('HOME')
+    # home = subprocess.os.environ.get('HOME')
+    DIR_PATH = '/usr/share/proxyhelper'
 
     parser = argparse.ArgumentParser(description='A simple command-line tool to manage proxy settings')
     main_args = parser.add_argument_group()
@@ -45,31 +46,37 @@ if __name__ == '__main__':
 
     if arg.setProxy:
         subprocess.call(['bash',
-                        '{}/.proxyhelper/zetproxy'.format(home)])
+                        '{}/zetproxy'.format(DIR_PATH)])
     elif arg.torPing:
         subprocess.call(['python3',
-                        '{}/.proxyhelper/torpinger'.format(home)])
+                        '{}/torpinger'.format(DIR_PATH)])
     elif arg.customProxy:
         subprocess.call(['bash',
-                        '{}/.proxyhelper/zetproxy'.format(home)
+                        '{}/zetproxy'.format(DIR_PATH)
                         ,'Proxy',arg.customProxy[0]])
     elif arg.clearProxy:
         subprocess.call(['bash',
-                        '{}/.proxyhelper/zetproxy'.format(home),
+                        '{}/zetproxy'.format(DIR_PATH),
                         'None'])
     elif arg.getProxy:
         subprocess.call(['python3',
-                        '{}/.proxyhelper/surely_parallel.py'.format(home)])
+                        '{}/surely_parallel.py'.format(DIR_PATH)])
     elif arg.manual:
         subprocess.call('sudo rm /etc/network/if-up.d/zetproxy', shell=True)
         subprocess.call('sudo rm /etc/network/if-up.d/torpinger', shell=True)
     elif arg.auto:
-        subprocess.call('sudo cp {}/.proxyhelper/zetproxy /etc/network/if-up.d/'.format(home),shell=True)
-        subprocess.call('sudo cp {}/.proxyhelper/torpinger /etc/network/if-up.d/'.format(home),shell=True)
+        subprocess.call(
+                'sudo cp {}/zetproxy /etc/network/if-up.d/'
+                .format(DIR_PATH),shell=True)
+        subprocess.call(
+                'sudo cp {}/torpinger /etc/network/if-up.d/'
+                .format(DIR_PATH),shell=True)
     elif arg.update:
         print('Updating ProxyHelper.')
-        # To implement !!
-        # Here !!
+        subprocess.call(['sh',
+                        '{}/update.sh'.format(DIR_PATH)])
     else:
-        parser.print_help()
+        print('Type "phelp -h" to get description of all features of phelp"')
+        subprocess.call(['bash',
+                        '{}/zetproxy'.format(DIR_PATH)])
 

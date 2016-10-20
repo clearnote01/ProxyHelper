@@ -71,7 +71,7 @@ proxy_apt()
 # need thorough testing
 proxy_gnome()
 {
-    echo '## Handling gnome proxy'
+    echo '## Setting gnome proxy'
     gsettings set org.gnome.system.proxy.http host ''
     gsettings set org.gnome.system.proxy.http port 0
     gsettings set org.gnome.system.proxy.https host ''
@@ -177,7 +177,7 @@ else
     echo '----------------------------------'
     echo ''
     echo '## Evaluating fastest proxy'
-    PROXY_OP=$(python3 $HOME/.proxyhelper/surely_parallel.py | tail -1)
+    PROXY_OP=$(python3 /usr/share/proxyhelper/surely_parallel.py | tail -1)
     echo ' '  $PROXY_OP
     phrase='-> Best proxy'
     key=$(echo $PROXY_OP | sed 's/-> Best proxy : .*/phrase/')
@@ -223,14 +223,16 @@ then
 fi
 
 # We don't want to update when we are uninstalling or just resetting proxy
-if [[  $1 != "Proxy" && $1 != "None" && $1 != "Socks" ]]
-then
-    home=$HOME
-    cd $home/.proxyhelper && git pull origin master && sh ./install.sh
-    echo '## Updating ProxyHelper'
-fi
+#if [[  $1 != "Update" ]]
+#then
+    #echo '## Updating ProxyHelper'
+    #cd $HOME && sudo mkdir .proxyhelper && cd .proxyhelper && git pull origin master && sh ./install.sh
+#fi
 
 ## Better method would be to source the config script 
 ## But that doesn't work for unknown reason
+## Update: The reason is known now, running this script 
+## via python runs it independent of the active session 
+## kindof obvious behaviour, but sucks for us.
 
-# exec $SHELL
+exec $SHELL
