@@ -1,20 +1,5 @@
 #!/bin/sh
 
-# exit if root
-#if [ $(id -u) -eq 0 ]
-#then
-	#echo 'Run without sudo!!'
-	#exit
-#fi
-
-#home=$HOME
-
-#if [ ! $(pwd | sed 's/\/.*\/.*\///') = '.proxyhelper' ]
-#then
-    #echo Exiting. This script should be run from "~/.proxyhelper" directory
-    #exit
-#fi
-
 chmod +x ./zetproxy
 chmod +x ./update.sh
 chmod +x ./proxyhelper.py
@@ -60,10 +45,6 @@ then
 fi
 
 # symlinks fail if the path is not absolute
-#sudo ln -s $home/.proxyhelper/zetproxy /etc/network/if-up.d/
-#sudo ln -s $home/.proxyhelper/torpinger /etc/network/if-up.d/
-#sudo ln -s $home/.proxyhelper/proxyhelper.py /usr/bin/phelp
-
 sudo mkdir $DIR_PATH
 echo Creating source directory /usr/share/proxyhelper
 sudo cp ./proxyhelper.py ./update.sh ./zetproxy ./zettorproxy ./torpinger ./README.md ./install.sh ./uninstall.sh ./surely_parallel.py $DIR_PATH
